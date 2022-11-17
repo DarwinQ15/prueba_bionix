@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;;
+}
+
+.text-center{
+    color: bisque;
+}
+
+.character {
+    box-shadow: 2px 2px 8px #7d8c9b;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+}
+
+.character:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+}
+
+.card-img-top{
+    border-radius: 7px 7px 0 0;
+}
