@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/isLoading.css'
 
-const isLoading = () => {
+const IsLoading = () => {
     return (
         <>
             <div className='overlay'>
@@ -11,4 +11,4 @@ const isLoading = () => {
     );
 };
 
-export default isLoading;
+export default IsLoading;

@@ -3,56 +3,54 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import validateGender from './ValidateGender';
 import '../styles/users.css';
-import isLoading from './isLoading';
+import IsLoading from './IsLoading';
 
 const Users = () => {
-
-
-    const [loading, setLoading] = useState(false);
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        axios.get('https://randomuser.me/api/?results=24')
-            .then((res) => {
-                setUsers(res.data.results)
-            })
-            .catch((error) => console.log(error))
-    }, []);
+    const [loading, setLoading] = useState(true); // pantalla de carga
+    const [users, setUsers] = useState([]); // estado de users 
+    const [gender, setGender] = useState('Gender'); //estado de gender 
 
     const baseUrl = 'https://randomuser.me/api/'
-    const getByGender = (gender) => {
+    useEffect(() => {
+        setLoading(true)
+        // console.log("Me ejecute", gender)
         if (gender === 'male') {
-            setLoading(true)
             axios.get(`${baseUrl}?results=20&gender=${gender}`)
                .then(res => {
-                    setUsers(res.data.results)
-                    const ageUsers = users.sort((a, b) => a.dob.age - b.dob.age).filter(e => e.gender === gender)
+                    const ageUsers = res.data.results.sort((a, b) => a.dob.age - b.dob.age) //me ordena los usuarios Hombres de menor a mayor
                     console.log(ageUsers);
                     setUsers(ageUsers)
-
                 })
                 .catch((error) => console.log(error))
                 .finally(()=> {
-                    setTimeout(() => {
-                        setLoading(false)
-                    }, 1000);
+                   setLoading(false)
                 })
         }
         else if (gender === 'female') {
             axios.get(`${baseUrl}?results=20&gender=${gender}`)
                 .then(res => {
-                    setUsers(res.data.results)
-                    const ageUsers = users.filter(e => e.gender === gender).sort((a, b) => b.email.localeCompare(a.email))
+                    const ageUsers = res.data.results.sort((a, b) => b.email.localeCompare(a.email)) // me ordena usuarios que sean mujeres  Z --> A de manera desencdente
                     console.log(ageUsers);
                     setUsers(ageUsers)
                 })
+                .finally(()=> {
+                    setLoading(false)
+                 })
                 .catch((error) => console.log(error))
         } else {
-            axios.get('https://randomuser.me/api/?results=24')
+            console.log("Me ejecute")
+            axios.get('https://randomuser.me/api/?results=24') //  me trae usuarios random ya sean mujeres y hombres de edad cualquiera
                 .then((res) => {
                     setUsers(res.data.results)
                 })
+                .finally(()=> {
+                    setLoading(false)
+                 })
                 .catch((error) => console.log(error))
         }
+    }, [gender])
+    if(loading){
+        return <IsLoading />
     }
 
     return (
@@ -60,7 +58,7 @@ const Users = () => {
             <div className='background'>
                 <h1 className='text-center mt-4'>Users from all over the world</h1>
                 <div className='inputs-users'>
-                    <select onChange={(e) => getByGender(e.target.value)}>
+                    <select onChange={(e) => setGender(e.target.value)} value={gender}>
                         <option key={users.email} value="gender">Gender</option>
                         <option key={users.email} value='male'>Male</option>
                         <option key={users.email} value='female'>Female</option>
@@ -73,7 +71,7 @@ const Users = () => {
                         <div className='character' style={{ color: validateGender(user.gender) }}>
                             <img src={user.picture.large} className="card-img-top mb-3" alt={user.name.title} />
                             <div className='card-body'>
-                                <p className='card-title'>{user.nat}</p>
+                                <p className='card-title'><i class='bx bx-location-plus' ></i> {user.nat}</p>
                                 <h5 className='card-title'>{user.name.first} {user.name.lastname}</h5>
                                 <p className="card-title">{user.gender}</p>
                                 <p className='card-title'>{user.dob.age}</p>
