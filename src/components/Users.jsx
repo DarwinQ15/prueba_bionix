@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import validateGender from './ValidateGender';
+import ValidateGender from './ValidateGender';
 import '../styles/users.css';
 import IsLoading from './IsLoading';
 
@@ -68,7 +68,7 @@ const Users = () => {
             <div className='row'>
                 {users.map((user) => (
                     <div className='col-md-3 mt-5' key={user.email}>
-                        <div className='character' style={{ color: validateGender(user.gender) }}>
+                        <div className='character' style={{ color: ValidateGender(user.gender) }}>
                             <img src={user.picture.large} className="card-img-top mb-3" alt={user.name.title} />
                             <div className='card-body'>
                                 <p className='card-title'><i class='bx bx-location-plus' ></i> {user.nat}</p>

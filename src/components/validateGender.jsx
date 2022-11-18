@@ -1,4 +1,4 @@
-const validateGender = (gender) => {
+const ValidateGender = (gender) => {
     if(gender === 'male' || gender === 1){
         return '#70b7fa';
     } else if(gender === 'female' || gender === 2) {
@@ -6,4 +6,4 @@ const validateGender = (gender) => {
     }
 }
 
-export default validateGender;
+export default ValidateGender;
