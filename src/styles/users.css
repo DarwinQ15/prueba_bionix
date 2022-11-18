@@ -4,10 +4,49 @@
     font-family: 'Poppins', sans-serif;;
 }
 
-.text-center{
-    color: bisque;
+body{
+    background-color: #f4f4f4;
 }
 
+.text-center{
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+    text-transform: uppercase;
+    color: rgb(19, 18, 17);
+}
+
+.background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;  
+    height: 120px;  
+}
+
+.inputs-users{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+select {
+    border: 1px solid #70b7fa;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 30px;
+    width: 120px;
+    height: 40px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    outline: none;
+    box-shadow: -10px -10px 15px #3a3a3a17, 10px 10px 15px #42424259;
+}
+   
 .character {
     box-shadow: 2px 2px 8px #7d8c9b;
     border-radius: 7px;
@@ -45,12 +84,19 @@
 }
 
 @media (min-width: 768px) {
+    .text-center{
+        font-size: 2.3rem;
+    }
+
     .email{
         font-size: 8.7px;
     }
 }
 
 @media (min-width: 992px) {
+    .text-center{
+        font-size: 2.6rem;
+    }
     .email{
         font-size: 12px;
     }
